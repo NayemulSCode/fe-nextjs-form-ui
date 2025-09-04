@@ -53,6 +53,7 @@ export default function Home() {
     if (formData) {
       toast.success("Form submitted successfully!", {
         description: "We have received your information.",
+        cancel: <Button variant="ghost">Dismiss</Button>,
       });
       console.log(formData);
       setFormData(null);

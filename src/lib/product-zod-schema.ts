@@ -1,3 +1,4 @@
+// lib/product-zod-schema.ts
 import { z } from "zod";
 
 export const productSchema = z.object({
@@ -11,3 +12,5 @@ export const productSchema = z.object({
     message: "Description must be less than 200 characters.",
   }).optional(),
 });
+
+export type ProductFormData = z.infer<typeof productSchema>;
