@@ -1,77 +1,70 @@
-import Image from "next/image";
 
-export default function Home() {
+import Link from 'next/link';
+
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="container mx-auto px-4 text-center">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-900 mb-6">
+          React Hook Form & Zod Demo
+        </h1>
+        <p className="text-xl text-gray-600 mb-12">
+          Explore three different form complexity levels with robust validation
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Link
+            href="/login"
+            className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="text-green-600 text-4xl mb-4">✓</div>
+            <h3 className="text-xl font-semibold mb-2">Login Form</h3>
+            <p className="text-gray-600">Easy level - Basic email and password validation</p>
+          </Link>
+
+          <Link
+            href="/register"
+            className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="text-blue-600 text-4xl mb-4">⚡</div>
+            <h3 className="text-xl font-semibold mb-2">Registration Form</h3>
+            <p className="text-gray-600">Intermediate - Complex validation with password matching</p>
+          </Link>
+
+          <Link
+            href="/product"
+            className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="text-purple-600 text-4xl mb-4">🚀</div>
+            <h3 className="text-xl font-semibold mb-2">Product Form</h3>
+            <p className="text-gray-600">Advanced - Multi-section form with dynamic fields</p>
+          </Link>
+        </div>
+
+        <div className="mt-16 bg-white p-8 rounded-lg shadow-md">
+          <h2 className="text-2xl font-semibold mb-4">Features Demonstrated</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            <div>
+              <h3 className="font-semibold text-gray-900">Form Libraries</h3>
+              <ul className="text-gray-600 mt-2 space-y-1">
+                <li>• React Hook Form</li>
+                <li>• Zod Schema Validation</li>
+                <li>• TypeScript Integration</li>
+                <li>• Custom UI Components</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900">Advanced Features</h3>
+              <ul className="text-gray-600 mt-2 space-y-1">
+                <li>• Dynamic Field Arrays</li>
+                <li>• Conditional Validation</li>
+                <li>• Cross-field Validation</li>
+                <li>• Real-time Validation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
