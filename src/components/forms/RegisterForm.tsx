@@ -1,10 +1,10 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema, RegisterFormData } from "@/lib/schemas";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { RegisterFormData, registerSchema } from "@/lib/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Input } from "../ui/input";
 
 export default function RegisterForm() {
   const {

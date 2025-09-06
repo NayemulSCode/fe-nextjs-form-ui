@@ -1,13 +1,14 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { LoginFormData, loginSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, LoginFormData } from "@/lib/schemas";
-import { Input } from "../ui/input";
+import { Controller, useForm } from "react-hook-form";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 export default function LoginForm() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -27,12 +28,30 @@ export default function LoginForm() {
       <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <Input
+        {/* uncontrolled */}
+
+        {/* <Input
           label="Email"
           type="email"
           placeholder="Enter your email"
           {...register("email")}
           error={errors.email?.message}
+        /> */}
+
+        {/* ✅ Controlled input (using Controller) */}
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <Input
+              label="Email"
+              type="email"
+              placeholder="Enter your email"
+              value={field.value || ""} // React state দিয়ে control হচ্ছে
+              onChange={field.onChange} // React state আপডেট করছে
+              error={errors.email?.message}
+            />
+          )}
         />
 
         <Input

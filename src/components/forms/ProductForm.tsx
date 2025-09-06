@@ -1,13 +1,13 @@
 "use client";
 
-import { useForm, useFieldArray } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { productSchema, ProductFormData } from "@/lib/schemas";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { ProductFormData, productSchema } from "@/lib/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { Input } from "../ui/input";
 
 const categories = [
   { value: "electronics", label: "Electronics" },
