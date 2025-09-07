@@ -1,4 +1,6 @@
-import LoginForm from "@/components/forms/LoginForm";
+// import LoginForm from "@/components/forms/LoginForm";
+
+import LoginForm from "@/components/forms/VanillaLoginForm";
 
 export default function LoginPage() {
   return (
@@ -7,6 +9,7 @@ export default function LoginPage() {
         <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
         <p className="text-gray-600 mt-2">Please sign in to your account</p>
       </div>
+      {/* <LoginForm /> */}
       <LoginForm />
     </div>
   );
