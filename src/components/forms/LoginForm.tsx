@@ -5,8 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import React from "react";
 
 export default function LoginForm() {
+  const [showPassword, setShowPassword] = React.useState(false);
   const {
     control,
     register,
@@ -53,14 +55,24 @@ export default function LoginForm() {
             />
           )}
         />
-
-        <Input
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          {...register("password")}
-          error={errors.password?.message}
-        />
+        <div className="relative">
+          <Input
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter your password"
+            {...register("password")}
+          />
+          <button
+            type="button"
+            className="absolute right-3 top-[38px] text-sm text-blue-600 hover:underline"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
+        <div className="absolute right-3 top-[38px] text-sm text-blue-600 hover:underline">
+          {errors.password?.message}
+        </div>
 
         <Button type="submit" className="w-full" loading={isSubmitting}>
           {isSubmitting ? "Signing in..." : "Sign In"}
