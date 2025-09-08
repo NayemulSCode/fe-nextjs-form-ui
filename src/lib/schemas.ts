@@ -20,11 +20,20 @@ export const loginSchema = z.object({
 export type LoginFormData = z.infer<typeof loginSchema>;
 
 // Registration Schema (Intermediate)
+const imageSchema = z
+  .instanceof(File)
+  .refine((file) => file.size <= 5 * 1024 * 1024, "Image size must be less than 5MB")
+  .refine((file) => file.type.startsWith("image/"), "File must be an image")
+  .optional();
+
 export const registerSchema = z
   .object({
+    // Required fields
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
     email: z.email("Please enter a valid email address"),
+    category: z.string().min(1, "Please select a category"),
+    subcategory: z.string().min(1, "Please select a subcategory"),
     password: z
       .string()
       .min(8, "Password must be at least 8 characters")
@@ -48,6 +57,23 @@ export const registerSchema = z
         (val) => val === true,
         "You must accept the terms and conditions"
       ),
+    
+    // Image field (optional)
+    profileImage: imageSchema,
+    
+    // Optional fields
+    address: z.string().optional(),
+    city: z.string().optional(),
+    emergencyContactName: z
+      .string()
+      .min(2, "Emergency contact name must be at least 2 characters")
+      .optional()
+      .or(z.literal("")),
+    emergencyContactPhone: z
+      .string()
+      .regex(/^\+?[\d\s-()]+$/, "Please enter a valid phone number")
+      .optional()
+      .or(z.literal("")),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
