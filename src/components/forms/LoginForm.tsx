@@ -6,6 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import React from "react";
+import { toast } from "sonner";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -20,9 +21,19 @@ export default function LoginForm() {
 
   const onSubmit = async (data: LoginFormData) => {
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Login data:", data);
-    alert("Login successful!");
+    if (data) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast.success("Login successful!", {
+        description: "You have been logged in successfully.",
+        cancel: (
+          <Button variant="ghost" onClick={() => toast.dismiss()}>
+            Dismiss
+          </Button>
+        ),
+      });
+    }
+    // alert("Login successful!");
   };
 
   return (

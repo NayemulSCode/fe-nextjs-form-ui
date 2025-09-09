@@ -1,6 +1,7 @@
-// import LoginForm from "@/components/forms/LoginForm";
+import LoginForm from "@/components/forms/LoginForm";
+// import { CardDemo } from "@/components/forms/LoginFormWithShadcn";
 
-import LoginForm from "@/components/forms/VanillaLoginForm";
+// import LoginForm from "@/components/forms/VanillaLoginForm";
 
 export default function LoginPage() {
   return (
@@ -11,6 +12,7 @@ export default function LoginPage() {
       </div>
       {/* <LoginForm /> */}
       <LoginForm />
+      {/* <CardDemo /> */}
     </div>
   );
 }
